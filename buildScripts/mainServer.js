@@ -14,18 +14,19 @@ app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: wpconfig.output.publicPath
 }));
 
-
-
 //Express web app
 app.get('/', function(request, response){
     console.log(request.url);
     response.sendFile(path.join(__dirname,'../src/index.html'));
 });
 
-//for css
-app.get('/css/style.css', function(request, response){
-    response.sendFile(path.join(__dirname, '../src/css/style.css'));
-});
+//serving static paths for JS and CSS
+app.use('/css', express.static(path.join(__dirname, '../src/css')));
+app.use('/js', express.static(path.join(__dirname, '../src/js')));
+
+
+app.use(express.static('src/css/'));
+
 
 app.listen(port, function(err){
     if(err){
