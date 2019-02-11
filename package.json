@@ -5,19 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart":"babel-node buildScripts/initializingServer.js",
-    "start":"npm-run-all --parallel security-check lint-watch get:src start-mock-api",
-    "get:src":"babel-node buildScripts/mainServer.js",
-    "lint":"esw webpack.config.* src buildScripts --color",
-    "lint-watch" :"npm run lint -- --watch",
-    "debugapp":"babel-node --inspect --debug-brk buildScripts/mainServer.js",
-    "generate-sample-data":"babel-node dataScripts/dataGenerator",
-    "prestart-mock-api":"npm run generate-sample-data",
-    "start-mock-api":"json-server --watch src/api/db.json --port 3001",
-    "security-check":"nsp check",
+    "prestart": "babel-node buildScripts/initializingServer.js",
+    "start": "npm-run-all --parallel lint-watch get:src start-mock-api",
+    "get:src": "babel-node buildScripts/mainServer.js",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint-watch": "npm run lint -- --watch",
+    "debugapp": "babel-node --inspect --debug-brk buildScripts/mainServer.js",
+    "generate-sample-data": "babel-node dataScripts/dataGenerator",
+    "prestart-mock-api": "npm run generate-sample-data",
+    "start-mock-api": "json-server --watch src/api/db.json --port 3001",
+    "security-check": "nsp check",
     "share": "npm-run-all --parallel start runlocaltunnel",
-    "runlocaltunnel":"lt --port 3000"
-
+    "runlocaltunnel": "lt --port 3000"
   },
   "repository": {
     "type": "git",
